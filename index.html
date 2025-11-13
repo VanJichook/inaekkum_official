@@ -4,29 +4,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>inaekkum — Official Website</title>
+
   <style>
+    /* =============================================================
+       📌 커스텀 폰트 로드 (영문 전용) — OtherHand
+       woff2 형식은 웹에서 가장 가볍고 최적화됨
+       ============================================================= */
     @font-face {
       font-family: "OtherHand";
       src: url("fonts/OtherHand-Medium.woff2") format("woff2");
-      font-weight: normal;
-      font-style: normal;
     }
+
+    /* =============================================================
+       📌 전체 기본 스타일: 한글 중심 본문 폰트
+       본문은 가독성 중심 Noto Sans KR 사용
+       ============================================================= */
     body {
       font-family:'Noto Sans KR', sans-serif;
       background:#fff;
       color:#333;
-      font-family:'Noto Sans KR', sans-serif;
       margin:0;
       line-height:1.6;
-      overflow-x:hidden;
+      overflow-x:hidden; /* 모바일 등에 화면 튀는 것 방지 */
     }
 
-    /* NAV */
+    /* =============================================================
+       📌 NAV (상단 메뉴) — sticky로 화면 최상단 고정
+       ============================================================= */
     nav {
       width:100%;
       text-align:center;
       padding:1.2em 0;
-      position:sticky;
+      position:sticky; /* 스크롤해도 상단에 고정 */
       top:0;
       background:#fff;
       z-index:50;
@@ -41,26 +50,44 @@
       color:#666;
       transition:0.25s;
     }
-    nav button:hover, nav button.active {
+    nav button:hover,
+    nav button.active {
       color:#000;
       font-weight:600;
     }
 
-    section { display:none; opacity:0; transition:opacity .5s ease; padding:3em 1.5em; max-width:900px; margin:auto; }
-    section.active { display:block; opacity:1; }
+    /* =============================================================
+       📌 section 기본 숨김 + fade-in 전환
+       ============================================================= */
+    section {
+      display:none;
+      opacity:0;
+      transition:opacity .5s ease;
+      padding:3em 1.5em;
+      max-width:900px;
+      margin:auto;
+    }
+    section.active {
+      display:block;
+      opacity:1;
+    }
 
-    /* HOME */
+    /* =============================================================
+       📌 HOME 영역: 메인 타이틀 + 라이브 위젯
+       ============================================================= */
     #home {
       text-align:center;
       padding-top:5em;
     }
     #home h1 {
-      font-family:"OtherHand", sans-serif; {
+      font-family:"OtherHand", sans-serif; /* 타이틀만 커스텀 폰트 */
       font-size:2.8em;
       margin-bottom:0.3em;
     }
 
-    /* ABOUT */
+    /* =============================================================
+       📌 ABOUT — 언어 토글 + 타임라인 갤러리
+       ============================================================= */
     #langToggle {
       text-align:right;
       margin-bottom:1em;
@@ -73,6 +100,7 @@
       cursor:pointer;
     }
 
+    /* 갤러리: 반응형 그리드 */
     .gallery {
       margin-top:2em;
       display:grid;
@@ -80,10 +108,14 @@
       gap:1.2em;
     }
     .gallery img {
-      width:100%; border-radius:6px;
+      width:100%;
+      border-radius:6px;
+      loading:lazy; /* 이미지 성능 향상 */
     }
 
-    /* NEWS */
+    /* =============================================================
+       📌 NEWS 링크 스타일
+       ============================================================= */
     .link-list a {
       display:block;
       padding:0.6em 0;
@@ -92,18 +124,25 @@
       border-bottom:1px solid #eee;
     }
 
-    /* CONTACT */
+    /* =============================================================
+       📌 CONTACT
+       ============================================================= */
     .contact-block { margin-bottom:2em; }
     .contact-block h3 { margin-bottom:0.4em; }
 
-    @media(max-width:600px){
+    /* =============================================================
+       📌 MOBILE 반응형
+       ============================================================= */
+    @media(max-width:600px) {
       #home h1 { font-size:2.1em; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- ============================================================= -->
+  <!-- NAV: 버튼 클릭 시 section 전환 -->
+  <!-- ============================================================= -->
   <nav>
     <button class="active" onclick="showSection('home', event)">HOME</button>
     <button onclick="showSection('about', event)">ABOUT</button>
@@ -112,129 +151,47 @@
   </nav>
 
 
-  <!-- HOME + LIVE -->
+  <!-- ============================================================= -->
+  <!-- HOME + LIVE SECTION -->
+  <!-- ============================================================= -->
   <section id="home" class="active">
-    <h1>inaekkum/h1>
-    <p style="font-size:1.2em; color:#555;"><br>Daegu, South Korea</p>
+    <h1>inaekkum</h1>
+    <p style="font-size:1.2em; color:#555;">Daegu, South Korea</p>
 
     <hr style="margin:3em auto; width:40%;">
 
-    <h2>LIVE</h2>
+    <h2 style="font-family:'OtherHand', sans-serif;">LIVE</h2>
     <p>Upcoming Shows & Tours</p>
 
-    <!-- Bandsintown Widget Placeholder -->
+    <!-- Bandsintown: 외부 위젯이 자동으로 공연 목록 로드 -->
     <div id="bit-widget-container"></div>
-    
-  <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
-  <a class="bit-widget-initializer"
-    
-	data-artist-name="id_15583383"
-	
-	data-events-to-display=""
-	data-background-color="rgba(255,255,255,1)"
-	data-separator-color="rgba(115,207,217,1)"
-	data-text-color="rgba(34,36,38,1)"
-	data-font="Andalé Mono"
-	data-auto-style="true"
-	
-	data-button-label-capitalization="uppercase"
-	data-header-capitalization="uppercase"
-	data-location-capitalization="uppercase"
-	data-venue-capitalization="uppercase"
-	data-display-local-dates="true"
-	data-local-dates-position="tab"
-	data-display-past-dates="true"
-	data-display-details="false"
-	data-display-lineup="false"
-	data-display-start-time="true"
-	data-social-share-icon="false"
-	data-display-limit="all"
-	
-	data-date-format="MMM. D, YYYY"
-	data-date-orientation="horizontal"
-	data-date-border-color="#4A4A4A"
-	data-date-border-width="1px"
-	data-date-capitalization="capitalize"
-	data-date-border-radius="10px"
-	
-	data-event-ticket-cta-size="medium"
-	data-event-custom-ticket-text=""
-	data-event-ticket-text="TICKETS"
-	data-event-ticket-icon="false"
-	data-event-ticket-cta-text-color="rgba(255,255,255,1)"
-	data-event-ticket-cta-bg-color="rgba(115,207,217,1)"
-	data-event-ticket-cta-border-color="rgba(115,207,217,1)"
-	data-event-ticket-cta-border-width="0px"
-	data-event-ticket-cta-border-radius="2px"
-	
-	data-sold-out-button-text-color="rgba(255,255,255,1)"
-	data-sold-out-button-background-color="rgba(115,207,217,1)"
-	data-sold-out-button-border-color="rgba(115,207,217,1)"
-	data-sold-out-button-clickable="true"
-	
-	data-event-rsvp-position="left"
-	data-event-rsvp-cta-size="medium"
-	data-event-rsvp-only-show-icon="false"
-	data-event-rsvp-text="RSVP"
-	data-event-rsvp-icon="false"
-	data-event-rsvp-cta-text-color="rgba(115,207,217,1)"
-	data-event-rsvp-cta-bg-color="rgba(255,255,255,1)"
-	data-event-rsvp-cta-border-color="rgba(115,207,217,1)"
-	data-event-rsvp-cta-border-width="1px"
-	data-event-rsvp-cta-border-radius="2px"
-	
-	data-follow-section-position="top"
-	data-follow-section-alignment="center"
-	data-follow-section-header-text="Get updates on new shows, new music, and more"
-	data-follow-section-cta-size="medium"
-	data-follow-section-cta-text="FOLLOW"
-	data-follow-section-cta-icon="false"
-	data-follow-section-cta-text-color="rgba(255,255,255,1)"
-	data-follow-section-cta-bg-color="rgba(115,207,217,1)"
-	data-follow-section-cta-border-color="rgba(115,207,217,1)"
-	data-follow-section-cta-border-width="0px"
-	data-follow-section-cta-border-radius="2px"
-	
-	data-play-my-city-position="bottom"
-	data-play-my-city-alignment="center"
-	data-play-my-city-header-text="Don’t see a show near you?"
-	data-play-my-city-cta-size="medium"
-	data-play-my-city-cta-text="REQUEST A SHOW"
-	data-play-my-city-cta-icon="false"
-	data-play-my-city-cta-text-color="rgba(255,255,255,1)"
-	data-play-my-city-cta-bg-color="rgba(115,207,217,1)"
-	data-play-my-city-cta-border-color="rgba(115,207,217,1)"
-	data-play-my-city-cta-border-width="0px"
-	data-play-my-city-cta-border-radius="2px"
-	
-	data-optin-font=""
-	data-optin-text-color=""
-	data-optin-bg-color=""
-	data-optin-cta-text-color=""
-	data-optin-cta-bg-color=""
-	data-optin-cta-border-width=""
-	data-optin-cta-border-radius=""
-	data-optin-cta-border-color=""
-	
-	data-language="en"
-	data-layout-breakpoint="900"
-	data-app-id=""
-	data-affil-code=""
-	data-bit-logo-position="bottomRight"
-	data-bit-logo-color="rgba(34,36,38,1)"
-	
-    ></a>
+
+    <!-- 위젯 스크립트 로드 -->
+    <script charset="utf-8" src="https://widgetv3.bandsintown.com/main.min.js"></script>
+
+    <!-- 위젯 초기화 설정: artist-id 기반 호출 -->
+    <a class="bit-widget-initializer"
+       data-artist-name="id_15583383"
+       data-text-color="rgba(34,36,38,1)"
+       data-display-past-dates="true"
+       data-date-format="MMM. D, YYYY"
+       data-display-limit="all"
+       data-language="en"></a>
   </section>
 
 
-  <!-- ABOUT (KR/EN toggle + TIMELINE + VISUAL) -->
+  <!-- ============================================================= -->
+  <!-- ABOUT SECTION -->
+  <!-- ============================================================= -->
   <section id="about">
+
+    <!-- 언어 토글 버튼: JS에서 display 전환 -->
     <div id="langToggle">
       <button onclick="toggleLang('ko')">한국어</button>
       <button onclick="toggleLang('en')">ENG</button>
     </div>
 
-    <!-- 한국어 소개 -->
+    <!-- 한국어 소개문 -->
     <div id="aboutKO">
       <h2 style="font-family:'OtherHand', sans-serif;">이내꿈 (inaekkum)</h2>
       <p>
@@ -243,7 +200,7 @@
       </p>
     </div>
 
-    <!-- English introduction -->
+    <!-- 영어 소개문 -->
     <div id="aboutEN" style="display:none;">
       <h2 style="font-family:'OtherHand', sans-serif;">inaekkum</h2>
       <p>
@@ -257,6 +214,7 @@
     <h3 style="font-family:'OtherHand', sans-serif;">Timeline / Gallery</h3>
     <p style="color:#666;">A sequence of moments — rehearsals, studio work, performances, and travels.</p>
 
+    <!-- 타임라인 이미지 묶음 -->
     <div class="gallery">
       <img src="assets/sample1.jpg" alt="moment1">
       <img src="assets/sample2.jpg" alt="moment2">
@@ -266,11 +224,14 @@
   </section>
 
 
-  <!-- NEWS -->
+  <!-- ============================================================= -->
+  <!-- NEWS SECTION -->
+  <!-- ============================================================= -->
   <section id="news">
-    <h2>NEWS</h2>
+    <h2 style="font-family:'OtherHand', sans-serif;">NEWS</h2>
     <p>Latest updates, links, and channels.</p>
 
+    <!-- SNS 및 외부 링크 허브 -->
     <div class="link-list">
       <a href="#">네이버 블로그</a>
       <a href="#">Instagram</a>
@@ -282,45 +243,7 @@
   </section>
 
 
-  <!-- CONTACT -->
+  <!-- ============================================================= -->
+  <!-- CONTACT SECTION -->
+  <!-- ============================================================= -->
   <section id="contact">
-    <h2>CONTACT</h2>
-
-    <div class="contact-block">
-      <h3>Booking / Management</h3>
-      <p>inaekkum@gmail.com</p>
-    </div>
-
-    <div class="contact-block">
-      <h3>Press / PR</h3>
-      <p>via EPK / Email</p>
-    </div>
-
-    <div class="contact-block">
-      <h3>Followers</h3>
-      <p>Instagram · YouTube · X · Blog</p>
-    </div>
-
-    <div class="contact-block">
-      <h3>Business / Collaboration</h3>
-      <p>vanjichook@gmail.com</p>
-    </div>
-  </section>
-
-
-  <script>
-    function showSection(id, e){
-      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active');
-      document.getElementById(id).classList.add('active');
-    }
-
-    function toggleLang(lang){
-      document.getElementById('aboutKO').style.display = (lang==='ko') ? 'block':'none';
-      document.getElementById('aboutEN').style.display = (lang==='en') ? 'block':'none';
-    }
-  </script>
-
-</body>
-</html>
