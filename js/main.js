@@ -40,6 +40,10 @@ function loadSection(name) {
       if (name === "about") {
         initLangToggle();
       }
+
+      if (name === "news") {
+  loadRSS();
+      }
     })
     .catch(() => {
       content.innerHTML = "<p style='padding:2em;'>Failed to load section.</p>";
