@@ -98,6 +98,17 @@ function loadBandsintownWidget() {
   init.setAttribute("data-follow-section-cta-bg-color", "rgba(115,207,217,1)");
   init.setAttribute("data-follow-section-cta-text-color", "rgba(255,255,255,1)");
 
+  init.setAttribute("data-event-rsvp-position", "left");
+  init.setAttribute("data-event-rsvp-cta-size", "medium");
+  init.setAttribute("data-event-rsvp-only-show-icon", "false");
+  init.setAttribute("data-event-rsvp-text", "RSVP");
+  init.setAttribute("data-event-rsvp-icon", "false");
+  init.setAttribute("data-event-rsvp-cta-text-color", "rgba(115,207,217,1)");
+  init.setAttribute("data-event-rsvp-cta-bg-color", "rgba(255,255,255,1)");
+  init.setAttribute("data-event-rsvp-cta-border-color", "rgba(115,207,217,1)");
+  init.setAttribute("data-event-rsvp-cta-border-width", "1px");
+  init.setAttribute("data-event-rsvp-cta-border-radius", "2px");
+
   container.appendChild(init);
 
   // 스크립트 재로딩
