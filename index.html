@@ -396,5 +396,20 @@
       </p>
     </div>
   </section>
+<script>
+// 섹션 전환 함수
+function showSection(id, event) {
+  document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+// 언어 토글
+function toggleLang(lang) {
+  document.getElementById('aboutKO').style.display = lang === 'ko' ? 'block' : 'none';
+  document.getElementById('aboutEN').style.display = lang === 'en' ? 'block' : 'none';
+}
+</script>
 </body>
 </html>
