@@ -27,15 +27,40 @@ function loadSection(name) {
     .then(html => {
       content.innerHTML = html;
 
-      // 섹션 불러온 후 슬쩍 딜레이 두고 fade-in
+      // fade-in 효과
       setTimeout(() => content.classList.add("loaded"), 50);
 
-      // ★ HOME일 때만 Bandsintown 초기화
+      // ★ HOME일 때 Bandsintown 실행
       if (name === "home") {
         loadBandsintownWidget();
+      }
+
+      // ⭐ 여기에 추가!
+      // ★ ABOUT일 때 언어 토글 초기화 실행
+      if (name === "about") {
+        initLangToggle();
       }
     })
     .catch(() => {
       content.innerHTML = "<p style='padding:2em;'>Failed to load section.</p>";
     });
+}
+function initLangToggle() {
+  const ko = document.getElementById("aboutKO");
+  const en = document.getElementById("aboutEN");
+  const buttons = document.querySelectorAll(".lang-btn");
+
+  if (!ko || !en) return; // ABOUT 페이지가 아닐 때
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      if (btn.dataset.lang === "ko") {
+        ko.style.display = "block";
+        en.style.display = "none";
+      } else {
+        ko.style.display = "none";
+        en.style.display = "block";
+      }
+    });
+  });
 }
