@@ -99,3 +99,17 @@ nav button.active {
   color: #333;
   text-decoration: none;
 }
+.contact-block h3 {
+  margin-bottom: 0.4em;
+  font-family: 'OtherHand';
+}
+
+.contact-block p a {
+  color: #333;
+  text-decoration: none;
+}
+
+.contact-block p a:hover {
+  text-decoration: underline;
+}
+
