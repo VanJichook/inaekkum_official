@@ -19,7 +19,7 @@ function loadSection(name) {
   const content = document.getElementById("content");
   content.classList.remove("loaded");
 
-  fetch(`https://vanjichook.github.io/inaekkum_official/sections/${name}.html`)
+  fetch(`https://vanjichook.github.io/inaekkum_official/sections/${name}.html?v=5`)
     .then(res => res.text())
     .then(html => {
       content.innerHTML = html;
