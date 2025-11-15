@@ -135,15 +135,6 @@ function initLangSwitch() {
   apply(sw.checked);
 }
 
-
-
-// ----------------------------------------------------------------
-// ALBUM DATA FETCH (JSON)
-// ----------------------------------------------------------------
-window.albumDataPromise = fetch("/inaekkum_official/data/albums.json")
-  .then(r => r.json())
-  .then(data => { window.albumData = data; return data; });
-
 // ----------------------------------------------------------------
 // MUSIC MODAL (C-style: Spotify Layout + EN Toggle)
 // ----------------------------------------------------------------
