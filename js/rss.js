@@ -4,7 +4,7 @@ function loadRSS() {
   const box = document.getElementById("rss-feed");
   if (!box) return;
 
-  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://rss.blog.naver.com/inaekkum.xml")
+  fetch("https://api.rss2json.com/v1/api.json?api_key=w0incah4phyqyumgktjatozt6ip0gj1fpwk1mipw&rss_url=https://rss.blog.naver.com/inaekkum.xml")
     .then(r => r.json())
     .then(data => {
       if (!data.items) {
