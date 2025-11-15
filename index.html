@@ -17,7 +17,11 @@
 </head>
 
 <body>
-<nav>
+<nav class="nav-wrap">
+  <div class="nav-logo-row">
+    
+  </div>
+  <div class="nav-menu-row">
 <a href="/inaekkum_official/index.html" class="logo-link">
 <!-- 로고 복원본: 원래 비율 유지, height 강제 제거 -->
 <img src="/inaekkum_official/assets/images/inaekkum_logo.png" class="logo"
@@ -30,38 +34,54 @@ style="margin-right:1.2em; object-fit:contain;">
     <button data-section="news">NEWS</button>
     <button data-section="music">MUSIC</button>
     <button data-section="contact">CONTACT</button>
-  </nav>
+  </div>
+</nav>
 
 <style>
-  /* 모바일 네비게이션 대응 (정리 버전) */
-  @media (max-width: 480px) {
-    nav {
-      display:flex;
-      align-items:center;
-      justify-content:flex-start;
-      flex-wrap:nowrap;
-      overflow-x:auto;
-      -webkit-overflow-scrolling:touch;
-      gap:0.5em;
-      padding:0.5em 0.5em;
-      white-space:nowrap;
-      scrollbar-width:none;
-    }
-    nav::-webkit-scrollbar { display:none; }
+  /* 모바일 네비게이션 대응 (로고/메뉴 분리) */
+@media (max-width: 480px) {
+  .nav-wrap {
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    border-bottom:1px solid #eee;
+  }
 
-    nav .logo-link {
-      flex:0 0 auto;
-      margin-right:0.6em;
-      display:flex;
-      align-items:center;
-    }
+  .nav-logo-row {
+    width:100%;
+    display:flex;
+    justify-content:center;
+    padding:0.5em 0;
+    background:#fff;
+  }
 
-    nav img.logo {
-      width:100px !important;
-      height:auto !important;
-      flex-shrink:0;
-      object-fit:contain;
-    }
+  .nav-menu-row {
+    width:100%;
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    gap:0.5em;
+    padding:0.4em 0.5em;
+    white-space:nowrap;
+    scrollbar-width:none;
+    background:#fff;
+  }
+
+  .nav-menu-row::-webkit-scrollbar { display:none; }
+
+  .nav-menu-row button {
+    flex:0 0 auto;
+    font-size:0.85rem;
+    padding:0.35em 0.7em;
+  }
+
+  .nav-logo-row img.logo {
+    width:140px !important;
+    height:auto !important;
+  }
+}
+    
 
     nav button {
       flex:0 0 auto;
@@ -70,7 +90,20 @@ style="margin-right:1.2em; object-fit:contain;">
       flex-shrink:0;
     }
   }
-    
+    nav::-webkit-scrollbar { display:none; }
+
+    nav .logo-link {
+      flex:0 0 auto;
+      margin-right:0.4em;
+      display:flex;
+      align-items:center;
+    }
+
+    nav img.logo {
+      width:120px !important;
+      height:auto !important;
+      object-fit:contain;
+    }
 
     nav button {
       flex:0 0 auto;
