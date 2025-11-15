@@ -72,6 +72,40 @@ function initLangSwitch() {
 }
 
 // =====================================
+// MUSIC: 앨범 모달 언어 스위치
+// =====================================
+
+function openAlbumModal(key) {
+  const modal = document.getElementById('album-modal');
+  const wrap = document.getElementById('albumModalInner');
+  const sw = document.getElementById('albumLangSwitch');
+
+  if (!window.albumData) return;
+  const data = window.albumData[key]; // {kr:"", en:""}
+  if (!data) return;
+
+  wrap.innerHTML = `
+    <div id="albumKR">${data.kr}</div>
+    <div id="albumEN" style="display:none;">${data.en}</div>
+  `;
+
+  if (sw) {
+    sw.checked = false;
+    sw.onchange = () => {
+      document.getElementById('albumKR').style.display = sw.checked ? 'none' : 'block';
+      document.getElementById('albumEN').style.display = sw.checked ? 'block' : 'none';
+    };
+  }
+
+  modal.style.display = 'flex';
+}
+
+function closeAlbumModal() {
+  const modal = document.getElementById('album-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+// =====================================
 //  Bandsintown (옵션 포함 + 중복 제거)
 // =====================================
 function loadBandsintownWidget() {
