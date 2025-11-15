@@ -9,25 +9,34 @@
   <link rel="stylesheet" href="/inaekkum_official/css/style.css">
 
   <style>
-/* ---- NAVIGATION CLEAN RESET ---- */
+/* =====================
+   GLOBAL FONT RESTORE
+===================== */
+body, button, nav {
+  font-family: 'OtherHand', 'Noto Sans KR', sans-serif !important;
+}
+
+/* =====================
+   CLEAN NAVIGATION RESET
+===================== */
 nav {
   display:flex;
   align-items:center;
   justify-content:flex-start;
-  padding:1em 1.4em;
+  padding:1em 1.6em;
   background:#fff;
   position:relative;
   z-index:10;
 }
 
 nav .logo-link {
-  margin-right:2em;
   display:flex;
   align-items:center;
+  margin-right:2.2em;
 }
 
 nav img.logo {
-  height:40px;   /* 데스크탑에서 크게 복구 */
+  height:48px;   /* PC 로고 정상 복구 */
   width:auto;
   object-fit:contain;
 }
@@ -35,28 +44,31 @@ nav img.logo {
 nav button {
   background:none;
   border:none;
-  margin-right:1.2em;
-  font-size:1rem;
+  margin-right:1.6em;
+  font-size:1.05rem;
   cursor:pointer;
-  padding:0.3em 0.4em;
+  padding:0.4em 0.4em;
+  font-family:'OtherHand', sans-serif;
 }
 
 nav button.active {
   font-weight:700;
 }
 
-/* ---- MOBILE ---- */
+/* =====================
+   MOBILE (로고 숨김)
+===================== */
 @media (max-width: 480px) {
   nav {
     padding:0.8em 1em;
     justify-content:flex-start;
   }
   nav .logo-link {
-    display:none; /* 모바일에서는 로고 숨김 */
+    display:none !important;
   }
   nav button {
     font-size:0.9rem;
-    margin-right:0.8em;
+    margin-right:1em;
   }
 }
 </style>
