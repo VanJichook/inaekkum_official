@@ -1,43 +1,33 @@
-// main.js (v2.0) with RSS integration + Bandsintown initialization
+// main.js (with MUSIC modal C-style + EN toggle)
 
-// 페이지 로드시 기본 HOME 로드
+// PAGE LOAD ------------------------------------------------------
 window.addEventListener("DOMContentLoaded", () => {
   loadSection("home");
 });
 
-// 네비게이션 버튼 처리
 document.addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON" && e.target.dataset.section) {
     const section = e.target.dataset.section;
 
-    document.querySelectorAll("nav button")
-      .forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll("nav button").forEach((btn) => btn.classList.remove("active"));
     e.target.classList.add("active");
 
     loadSection(section);
   }
 });
 
-// --------------------------
-// 섹션 로더
-// --------------------------
+// SECTION LOADER -------------------------------------------------
 function loadSection(name) {
   const content = document.getElementById("content");
   content.classList.remove("loaded");
 
   fetch(`https://vanjichook.github.io/inaekkum_official/sections/${name}.html?v=7`)
-    .then(res => res.text())
-    .then(html => {
+    .then((res) => res.text())
+    .then((html) => {
       content.innerHTML = html;
       setTimeout(() => content.classList.add("loaded"), 50);
 
-      if (name === "home") {
-        // HOME 로드 직후 Bandsintown 위젯 초기화
-        setTimeout(() => {
-          loadBandsintownWidget();
-        }, 80);
-      }
-
+      if (name === "home") setTimeout(() => loadBandsintownWidget(), 80);
       if (name === "about") initLangSwitch();
       if (name === "news") loadRSS();
     })
@@ -46,54 +36,24 @@ function loadSection(name) {
     });
 }
 
-// --------------------------
-// Bandsintown Loader
-// --------------------------
+// BANDSINTOWN ----------------------------------------------------
 function loadBandsintownWidget() {
   const container = document.getElementById("bit-widget-container");
   if (!container) return;
 
-  // 기존 위젯 초기화
   container.innerHTML = `
     <a class="bit-widget-initializer"
       data-artist-name="id_15583383"
-      data-events-to-display=""
       data-background-color="rgba(255,255,255,1)"
       data-separator-color="rgba(115,207,217,1)"
       data-text-color="rgba(34,36,38,1)"
-      data-font="Andalé Mono"
-      data-auto-style="true"
-      data-button-label-capitalization="uppercase"
-      data-header-capitalization="uppercase"
-      data-location-capitalization="uppercase"
-      data-venue-capitalization="uppercase"
       data-display-local-dates="true"
-      data-local-dates-position="tab"
       data-display-past-dates="true"
       data-display-details="false"
-      data-display-lineup="false"
       data-display-start-time="true"
-      data-social-share-icon="false"
       data-display-limit="all"
       data-date-format="MMM. D, YYYY"
       data-date-orientation="horizontal"
-      data-date-border-color="#4A4A4A"
-      data-date-border-width="1px"
-      data-date-capitalization="capitalize"
-      data-date-border-radius="10px"
-      data-event-ticket-cta-size="medium"
-      data-event-custom-ticket-text=""
-      data-event-ticket-text="TICKETS"
-      data-event-ticket-icon="false"
-      data-event-ticket-cta-text-color="rgba(255,255,255,1)"
-      data-event-ticket-cta-bg-color="rgba(115,207,217,1)"
-      data-event-ticket-cta-border-color="rgba(115,207,217,1)"
-      data-event-ticket-cta-border-width="0px"
-      data-event-ticket-cta-border-radius="2px"
-      data-sold-out-button-text-color="rgba(255,255,255,1)"
-      data-sold-out-button-background-color="rgba(115,207,217,1)"
-      data-sold-out-button-border-color="rgba(115,207,217,1)"
-      data-sold-out-button-clickable="true"
       data-event-rsvp-position="left"
       data-event-rsvp-cta-size="medium"
       data-event-rsvp-only-show-icon="false"
@@ -104,40 +64,11 @@ function loadBandsintownWidget() {
       data-event-rsvp-cta-border-color="rgba(115,207,217,1)"
       data-event-rsvp-cta-border-width="1px"
       data-event-rsvp-cta-border-radius="2px"
-      data-follow-section-position="top"
-      data-follow-section-alignment="center"
-      data-follow-section-header-text="Get updates on new shows, new music, and more"
-      data-follow-section-cta-size="medium"
-      data-follow-section-cta-text="FOLLOW"
-      data-follow-section-cta-icon="false"
-      data-follow-section-cta-text-color="rgba(255,255,255,1)"
-      data-follow-section-cta-bg-color="rgba(115,207,217,1)"
-      data-follow-section-cta-border-color="rgba(115,207,217,1)"
-      data-follow-section-cta-border-width="0px"
-      data-follow-section-cta-border-radius="2px"
-      data-play-my-city-position="bottom"
-      data-play-my-city-alignment="center"
-      data-play-my-city-header-text="Don’t see a show near you?"
-      data-play-my-city-cta-size="medium"
-      data-play-my-city-cta-text="REQUEST A SHOW"
-      data-play-my-city-cta-icon="false"
-      data-play-my-city-cta-text-color="rgba(255,255,255,1)"
-      data-play-my-city-cta-bg-color="rgba(115,207,217,1)"
-      data-play-my-city-cta-border-color="rgba(115,207,217,1)"
-      data-play-my-city-cta-border-width="0px"
-      data-play-my-city-cta-border-radius="2px"
-      data-language="en"
-      data-layout-breakpoint="900"
-      data-app-id="c32c33f654874394a2c1c87a4002e826"
-      data-bit-logo-position="bottomRight"
-      data-bit-logo-color="rgba(34,36,38,1)"
     ></a>`;
 
-  // 기존 스크립트 제거
   const oldScript = document.getElementById("bit-script");
   if (oldScript) oldScript.remove();
 
-  // 새 스크립트 강제 로드
   const script = document.createElement("script");
   script.id = "bit-script";
   script.src = "https://widgetv3.bandsintown.com/main.min.js?reload=" + Date.now();
@@ -145,50 +76,42 @@ function loadBandsintownWidget() {
   document.body.appendChild(script);
 }
 
-// --------------------------
-// NEWS RSS LOADER
-// --------------------------
+// RSS ------------------------------------------------------------
 function loadRSS() {
   const box = document.getElementById("rss-feed");
   if (!box) return;
 
   box.innerHTML = `<h4>Naver Blog</h4><p>Loading latest posts…</p>`;
 
-  fetch('https://vanjichook.github.io/inaekkum_official/data/naver_rss.json?ts=' + Date.now())
-    .then(r => r.json())
-    .then(data => {
+  fetch("https://vanjichook.github.io/inaekkum_official/data/naver_rss.json?ts=" + Date.now())
+    .then((r) => r.json())
+    .then((data) => {
       if (!data.items) {
-        box.innerHTML = '<h4>Naver Blog</h4><p>No posts available.</p>';
+        box.innerHTML = `<h4>Naver Blog</h4><p>No posts available.</p>`;
         return;
       }
 
-      box.innerHTML = '<h4>Naver Blog</h4>';
+      box.innerHTML = `<h4>Naver Blog</h4>`;
 
-      data.items.slice(0, 3).forEach(item => {
-        const wrap = document.createElement('div');
-        wrap.className = 'rss-item';
-        const date = new Date(item.pubDate).toLocaleDateString('ko-KR');
-
+      data.items.slice(0, 3).forEach((item) => {
+        const date = new Date(item.pubDate).toLocaleDateString("ko-KR");
+        const wrap = document.createElement("div");
+        wrap.className = "rss-item";
         wrap.innerHTML = `
           <a href="${item.link}" target="_blank">• ${item.title}</a>
-          <span style="display:block; color:#888; font-size:0.85em; margin-left:0.2em;">${date}</span>
-        `;
-
+          <span style="display:block; color:#888; font-size:0.85em;">${date}</span>`;
         box.appendChild(wrap);
       });
     })
-    .catch(err => {
-      console.error("RSS load error", err);
-      box.innerHTML = '<h4>Naver Blog</h4><p>Failed to load feed.</p>';
+    .catch(() => {
+      box.innerHTML = `<h4>Naver Blog</h4><p>Failed to load feed.</p>`;
     });
 }
 
-// --------------------------
-// ABOUT 언어 스위치
-// --------------------------
+// ABOUT LANG SWITCH ---------------------------------------------
 function initLangSwitch() {
-  const switchBtn = document.getElementById("langSwitch");
-  if (!switchBtn) return;
+  const sw = document.getElementById("langSwitch");
+  if (!sw) return;
 
   const introKO = document.getElementById("introKO");
   const introEN = document.getElementById("introEN");
@@ -197,7 +120,7 @@ function initLangSwitch() {
   const membersKO = document.getElementById("membersKO");
   const membersEN = document.getElementById("membersEN");
 
-  function applyLang(isEN) {
+  function apply(isEN) {
     if (introKO) introKO.style.display = isEN ? "none" : "block";
     if (introEN) introEN.style.display = isEN ? "block" : "none";
 
@@ -208,42 +131,382 @@ function initLangSwitch() {
     if (membersEN) membersEN.style.display = isEN ? "grid" : "none";
   }
 
-  switchBtn.addEventListener("change", () => {
-    applyLang(switchBtn.checked);
-  });
-
-  applyLang(switchBtn.checked);
+  sw.addEventListener("change", () => apply(sw.checked));
+  apply(sw.checked);
 }
 
-// --------------------------
-// MUSIC 모달
-// --------------------------
-function openAlbumModal(key) {
-  const modal = document.getElementById('album-modal');
-  const wrap = document.getElementById('albumModalInner');
-  const sw = document.getElementById('albumLangSwitch');
+// ----------------------------------------------------------------
+// MUSIC DATA (Organic Tender + Single Cup only for now)
+// ----------------------------------------------------------------
+window.albumData = {
+  organic: {
+    cover: "/inaekkum_official/assets/albums/organic_tender.jpg",
+    title: "Organic Tender",
+    date: "2025 · LP",
+    tracks: [
+      { en: "Before Sunrise", kr: "비포 선라이즈", vid: "O4636rdhkM8" },
+      { en: "Noise", kr: "노이즈", vid: "VIDEO_ID_NOISE" },
+      { en: "Karman Line", kr: "카르만 라인", vid: "VIDEO_ID_KARMAN" },
+      { en: "Light", kr: "라이트", vid: "nQlgQ2GB56A" },
+      { en: "Breath", kr: "브레스", vid: "E7hXtkPuRK4" },
+      { en: "Sophie", kr: "소피", vid: "6YLdHTjPhkI" },
+      { en: "Looove", kr: "러브", vid: "gGP6-aZ3EJI" },
+      { en: "Sisley", kr: "시슬리", vid: "LcOafznozSk" }
+    ],
+     kr: `
+      <h3>크레딧 (KR)</h3>
+      <pre>
+작곡: 민우석
+작사: 민우석
+편곡: 이내꿈, 구슬한@보수동쿨러
+프로듀싱: 구슬한@보수동쿨러
+Vocal: 민우석
+Bass: 민우석
+A.GTR: 민우석
+E.GTR: 김태양
+Synth: 최원민
+Drum: 박진
+Chorus: 이내꿈, 배들소, 장영은, 이왕동, 정희, 도큐, 인디생존자, 존해서빅마우스, 최성욱, 윤태민, 김수현, 허영민
+Recording: 김병규, 천학주, 황경수, 김태양·민우석
+Mixing: 천학주@머쉬룸레코딩스튜디오
+Mastering: 강승희@소닉코리아
+Artwork/Design/MV: 영민필름
+Special Thanks: 지베이스악기사, 배들소, 팔로, 제임스레코드, 꼬뮨공동체
+Supported: 대구음악창작소
+Published: 미러볼뮤직
+      </pre>
+    `,
+    en: `
+      <h3>Credits (EN)</h3>
+      <pre>
+Composed: MIN WOOSEOK
+Lyrics: MIN WOOSEOK
+Arranged: inaekkum, KOO SEULHAN@Bosudongcooler
+Produced: KOO SEULHAN@Bosudongcooler
+Vocal: MIN WOOSEOK
+Bass: MIN WOOSEOK
+A.GTR: MIN WOOSEOK
+E.GTR: KIM TAEYANG
+Synth: CHOI WONMIN
+Drum: PARK JIN
+Chorus: inaekkum, BAE DEULSO, JANG YOUNGEUN, LEE WANGDONG, JUNG HUI, Do.Q, INDIESURVIVOR, Johnhasabigmouth, CHOI SUNGWOOK, YOON TAEMIN, KIM SUHYUN, HEO YOUNGMIN
+Recording: KIM BYUNGYU, CHUN HAKJU, HWANG GYOUNGSOO, KIM TAEYANG & MIN WOOSEOK
+Mixing: CHUN HAKJU@MUSHROOMRECORDINGSTUDIO
+Mastering: KANG SEUNGHEE@SONICKOREA
+Artwork/Design/MV: 0min.film
+Special Thanks: G.BASE, BAE DEULSO, PALLO, JAMESRECORD, COMMUNESLIVE
+Supported: DAEGUMUSICFACTORY
+Published: MIRRORBALLMUSIC
+      </pre>
+    `,
+  },
 
-  if (!window.albumData) return;
+  singlecup: {
+    cover: "/inaekkum_official/assets/albums/single_cup.jpg",
+    title: "Single Cup",
+    date: "2025 · Digital Single",
+    tracks: [],
+    kr: `
+      <h3>크레딧 (KR)</h3>
+      <pre>
+준비중
+      </pre>
+    `,
+    en: `
+      <h3>Credits (EN)</h3>
+      <pre>
+준비중
+      </pre>
+    `,
+  },
+
+  emergence: {
+    cover: "/inaekkum_official/assets/albums/emergence.jpg",
+    title: "Emergence",
+    date: "2022 · EP",
+    tracks: [
+      { en: "TSR", kr: "TSR", vid: null },
+      { en: "Time Train", kr: "Time Train", vid: null },
+      { en: "Will", kr: "Will", vid: "-5HnjaBuYTs" },
+      { en: "Moonlight", kr: "너는 내게 달빛", vid: "MF_ZwjUA19Q" },
+      { en: "Snowflake", kr: "눈송이", vid: null },
+      { en: "Corona Blue", kr: "코로나 블루", vid: "uOD-RKLRkX8" }
+    ],
+    kr: `
+      <h3>크레딧 (KR)</h3>
+      <pre>
+음악: 이리와 내 꿈에 태워줄게
+작곡/작사: 민우석
+편곡: 이리와 내 꿈에 태워줄게
+Vocal: 민우석
+Guitar: 김태양
+Keys: 최원민
+Bass: 최성욱
+Drum: 정준수 / 최주찬(Track 6)
+Recording: 김태양, 심상명, 황경수
+Mixing: 김태양
+Mastering: 권남우@821Sound
+Artwork: rong.ryn
+      </pre>
+    `,
+    en: `
+      <h3>Credits (EN)</h3>
+      <pre>
+Music: MIN WOOSEOK
+Lyrics: MIN WOOSEOK
+Arranged: inaekkum
+Vocal: MIN WOOSEOK
+Guitar: KIM TAEYANG
+Keys: CHOI WONMIN
+Bass: CHOI SUNGWOOK
+Drum: JUNG JOONSOO / CHOI JOOCHAN
+Recording: KIM TAEYANG, SIM SANGMYEONG, HWANG GYOUNGSOO
+Mixing: KIM TAEYANG
+Mastering: KWON NAMWOO@821Sound
+Artwork: rong.ryn
+      </pre>
+    `,
+  },
+
+  coronablue: {
+    cover: "/inaekkum_official/assets/albums/corona_blue.jpg",
+    title: "Corona Blue",
+    date: "2022 · Single",
+    tracks: [
+      { en: "Corona Blue", kr: "코로나 블루", vid: "uOD-RKLRkX8" }
+    ],
+    kr: `
+      <h3>크레딧 (KR)</h3>
+      <pre>
+작사/작곡/편곡: 민우석
+Vocal: 민우석
+Guitar: 김태양
+Keys: 최원민
+Bass: 최성욱
+Drum: 최주찬
+Recording: 김태양, 황경수
+Mixing: 김태양
+Mastering: 권남우@821Sound
+      </pre>
+    `,
+    en: `
+      <h3>Credits (EN)</h3>
+      <pre>
+Lyrics/Composition/Arrangement: Min Wooseok
+Guitar: Kim Taeyang
+Keys: Choi Wonmin
+Bass: Choi Sungwook
+Drums: Choi Joochan
+Mixing: Kim Taeyang
+Mastering: Kwon Namwoo@821Sound
+      </pre>
+    `,
+  },
+
+  likeamovie: {
+    cover: "/inaekkum_official/assets/albums/like_a_movie.jpg",
+    title: "Like A Movie",
+    date: "2023 · Single",
+    tracks: [
+      { en: "Like A Movie", kr: "Like A Movie", vid: "a9gRQBwnhHE" }
+    ],
+    kr: `
+      <h3>크레딧 (KR)</h3>
+      <pre>
+작곡/작사/편곡: 민우석
+Vocal: 민우석
+Guitar: 김태양
+Keys: 최원민
+Bass: 최성욱
+Drum: 박진
+Recording: 김태양, 민우석, 황경수
+Mixing: 김태양
+Mastering: 권남우@821Sound
+      </pre>
+    `,
+    en: `
+      <h3>Credits (EN)</h3>
+      <pre>
+Lyrics/Composition/Arrangement: Min Wooseok
+Guitar: Kim Taeyang
+Keys: Choi Wonmin
+Bass: Choi Sungwook
+Drums: Park Jin
+Recording: Kim Taeyang, Min Wooseok, Hwang Gyungsoo
+Mixing: Kim Taeyang
+Mastering: Kwon Namwoo@821Sound
+      </pre>
+    `,
+  },
+
+  dragon: {
+    cover: "/inaekkum_official/assets/albums/dragon_fly.jpg",
+    title: "용가리도 하늘을 날고 싶어",
+    date: "2021 · Single",
+    tracks: [ { en: "Dragon Wants To Fly", kr: "용가리도 하늘을 날고 싶어", vid: "2KxNc9VBBjA" } ],
+    kr: `
+      <h3>크레딧 (KR)</h3>
+      <pre>
+작사/작곡: 민우석
+편곡: 민우석, 박진, 최성욱, 최원민
+Recording: MGMC H STUDIO, 한혜미
+Mixing: 김태양
+Mastering: 도정회@Soundmax
+Artwork: 이현우
+</pre>
+    `,
+  },
+
+
+seed: {
+cover: "/inaekkum_official/assets/albums/seed.jpg",
+title: "Seed OST",
+date: "2021 · OST",
+tracks: [
+{ en: "Seed (OST)", kr: "Seed (OST)", vid: "90rUO7xc1KA" }
+],
+kr: `
+<h3>크레딧 (KR)</h3>
+<pre>
+작곡/작사: 민우석
+편곡: 민우석, 백지현
+</pre>
+`,
+en: `
+<h3>Credits (EN)</h3>
+<pre>
+Composition/Lyrics/Arrangement: Min Wooseok (More details pending)
+</pre>
+`,
+},
+
+
+daegucomp: {
+cover: "/inaekkum_official/assets/albums/daegu_comp.jpg",
+title: "대구인디음악연대기 2022",
+date: "2023 · Compilation",
+tracks: [ { en: "Flower Road", kr: "꽃길", vid: null } ],
+kr: `
+<h3>크레딧 (KR)</h3>
+<pre>
+Vocal: 이내꿈
+작곡: 민우석
+작사: 민우석
+기획: 클럽헤비 × 인디053
+발매: Various
+</pre>
+`,
+en: `
+<h3>Credits (EN)</h3>
+<pre>
+Vocal: inaekkum
+Composition: Min Wooseok
+Lyrics: Min Wooseok
+Produced by Club Heavy × Indie053
+Release: Various
+</pre>
+`,
+},
+
+
+butterfly: {
+cover: "/inaekkum_official/assets/albums/butterfly.jpg",
+title: "나비가 된 불꽃",
+date: "2024 · Compilation",
+tracks: [ { en: "April and November", kr: "4월과 11월", vid: null } ],
+kr: `
+<h3>크레딧 (KR)</h3>
+<pre>
+Music: 이내꿈
+Featuring: 빈달
+작곡: 민우석
+};
+
+
+// ----------------------------------------------------------------
+// MUSIC MODAL (C-style: Spotify Layout + EN Toggle)
+// ----------------------------------------------------------------
+function openAlbumModal(key) {
+  const modal = document.getElementById("album-modal");
+  const box = document.getElementById("albumModalInner");
   const data = window.albumData[key];
   if (!data) return;
 
-  wrap.innerHTML = `
+  let trackHTML = data.tracks
+    .map(
+      (t, i) => `
+        <div class="track-item">
+          <div class="track-index">${i + 1}</div>
+          <div class="track-info">
+            <div class="track-title-en">${t.en}</div>
+            <div class="track-title-kr">${t.kr}</div>
+          </div>
+          <div class="track-video">${t.vid ? `<button onclick=\"openTrackVideo('${t.vid}')\">영상</button>` : ''}</div>
+        </div>`
+    )
+    .join("");
+
+  box.innerHTML = `
+    <div class="album-header">
+      <img src="${data.cover}" class="album-cover" />
+      <div class="album-meta">
+        <h2>${data.title}</h2>
+        <p>${data.date}</p>
+        <label class="lang-toggle">
+          <input type="checkbox" id="albumLangSwitch"> ENG
+        </label>
+      </div>
+    </div>
+
+    <div class="album-section">
+      <h3>Tracklist</h3>
+      <div class="tracklist">${trackHTML}</div>
+    </div>
+
     <div id="albumKR">${data.kr}</div>
     <div id="albumEN" style="display:none;">${data.en}</div>
   `;
 
-  if (sw) {
-    sw.checked = false;
-    sw.onchange = () => {
-      document.getElementById('albumKR').style.display = sw.checked ? 'none' : 'block';
-      document.getElementById('albumEN').style.display = sw.checked ? 'block' : 'none';
-    };
-  }
+  const sw = document.getElementById("albumLangSwitch");
+  sw.onchange = () => {
+    document.getElementById("albumKR").style.display = sw.checked ? "none" : "block";
+    document.getElementById("albumEN").style.display = sw.checked ? "block" : "none";
+  };
 
-  modal.style.display = 'flex';
+  modal.style.display = "flex";
+}
+
+function openTrackVideo(id) {
+  const modal = document.getElementById("album-modal");
+  const box = document.getElementById("albumModalInner");
+
+  box.innerHTML = `
+    <button onclick=\"closeAlbumModal()\" class="close-btn">×</button>
+    <iframe width="100%" height="360" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>
+  `;
+
+  modal.style.display = "flex";
 }
 
 function closeAlbumModal() {
-  const modal = document.getElementById('album-modal');
-  if (modal) modal.style.display = 'none';
+  document.getElementById("album-modal").style.display = "none";
 }
+
+/* --- MUSIC MODAL CSS (C-style Spotify Layout) --- */
+const style = document.createElement('style');
+style.innerHTML = `
+  .album-header { display:flex; gap:1.5em; margin-bottom:1.8em; }
+  .album-cover { width:180px; border-radius:10px; }
+  .album-meta h2 { margin:0; font-size:1.8em; }
+  .album-meta p { margin:0.3em 0 1em; color:#666; }
+  .tracklist { display:flex; flex-direction:column; gap:0.6em; margin:1em 0 2em; }
+  .track-item { display:flex; align-items:center; gap:1em; padding:0.6em 0; border-bottom:1px solid #eee; }
+  .track-index { width:24px; text-align:center; color:#555; }
+  .track-info { flex:1; }
+  .track-title-en { font-weight:600; }
+  .track-title-kr { font-size:0.9em; color:#777; }
+  .track-video button { padding:0.3em 0.8em; border:1px solid #bbb; background:none; border-radius:4px; cursor:pointer; }
+  @media(max-width:600px){ .album-header{flex-direction:column; align-items:center;} .album-cover{width:60%;} }
+`;
+document.head.appendChild(style);
+
