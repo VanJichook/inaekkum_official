@@ -42,11 +42,32 @@ style="margin-right:1.2em; object-fit:contain;">
       flex-wrap:nowrap;
       overflow-x:auto;
       -webkit-overflow-scrolling:touch;
-      gap:0.6em;
-      padding:0.8em 0.6em;
+      gap:0.4em;
+      padding:0.6em 0.4em;
       white-space:nowrap;
       scrollbar-width:none;
     }
+    nav::-webkit-scrollbar { display:none; }
+
+    nav .logo-link {
+      flex:0 0 auto;
+      margin-right:0.4em;
+      display:flex;
+      align-items:center;
+    }
+
+    nav img.logo {
+      width:120px !important;
+      height:auto !important;
+      object-fit:contain;
+    }
+
+    nav button {
+      flex:0 0 auto;
+      font-size:0.85rem;
+      padding:0.35em 0.6em;
+    }
+  }
     nav::-webkit-scrollbar { display:none; }
 
     nav .logo-link {
