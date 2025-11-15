@@ -140,17 +140,18 @@ function initLangSwitch() {
 // ----------------------------------------------------------------
 // ALBUM DATA FETCH (JSON)
 // ----------------------------------------------------------------
-fetch("/inaekkum_official/data/albums.json")
+window.albumDataPromise = fetch("/inaekkum_official/data/albums.json")
   .then(r => r.json())
-  .then(data => window.albumData = data);
+  .then(data => { window.albumData = data; return data; });
 
 // ----------------------------------------------------------------
 // MUSIC MODAL (C-style: Spotify Layout + EN Toggle)
 // ----------------------------------------------------------------
-function openAlbumModal(key) {
+async function openAlbumModal(key) {
   const modal = document.getElementById("album-modal");
   const box = document.getElementById("albumModalInner");
-  const data = window.albumData[key];
+  const db = await window.albumDataPromise;
+  const data = db[key];
   if (!data) return;
 
   let trackHTML = data.tracks
