@@ -119,7 +119,7 @@
     const box = document.getElementById("rss-feed");
     if (!box) return;
 
-    fetch('/inaekkum_official/data/naver_rss.json')
+    fetch('https://vanjichook.github.io/inaekkum_official/data/naver_rss.json')
       .then(r => r.json())
       .then(data => {
         if (!data.items) {
