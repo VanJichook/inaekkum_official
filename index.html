@@ -1,250 +1,67 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <link rel="preload" as="image" href="/inaekkum_official/assets/images/home_01.jpeg">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>inaekkum — Official Website</title>
 
+  <!-- Preload & CSS -->
+  <link rel="preload" as="image" href="/inaekkum_official/assets/images/home_01.jpeg">
   <link rel="stylesheet" href="/inaekkum_official/css/style.css">
 
-  <style>
-/* =====================
-   GLOBAL FONT RESTORE
-===================== */
-body, button, nav {
-  font-family: 'OtherHand', 'Noto Sans KR', sans-serif !important;
-}
-
-/* =====================
-   CLEAN NAVIGATION RESET
-===================== */
-nav {
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  padding:1em 1.6em;
-  background:#fff;
-  position:relative;
-  z-index:10;
-}
-
-nav .logo-link {
-  display:flex;
-  align-items:center;
-  margin-right:2.2em;
-}
-
-nav img.logo {
-  height:48px;   /* PC 로고 정상 복구 */
-  width:auto;
-  object-fit:contain;
-}
-
-nav button {
-  background:none;
-  border:none;
-  margin-right:1.6em;
-  font-size:1.05rem;
-  cursor:pointer;
-  padding:0.4em 0.4em;
-  font-family:'OtherHand', sans-serif;
-}
-
-nav button.active {
-  font-weight:700;
-}
-
-/* =====================
-   MOBILE (로고 숨김)
-===================== */
-@media (max-width: 480px) {
-  nav {
-    padding:0.8em 1em;
-    justify-content:flex-start;
-  }
-  nav .logo-link {
-    display:none !important;
-  }
-  nav button {
-    font-size:0.9rem;
-    margin-right:1em;
-  }
-}
-</style>
 </head>
 
 <body>
+
+<!-- ==========================
+     NAVIGATION
+=========================== -->
 <nav>
   <a href="/inaekkum_official/index.html" class="logo-link">
-    <img src="/inaekkum_official/assets/images/inaekkum_logo.png" class="logo" width="180" height="40" loading="lazy" style="object-fit:contain; margin-right:1.2em;">
+    <img src="/inaekkum_official/assets/images/inaekkum_logo.png"
+      class="logo" width="180" height="40" loading="lazy">
   </a>
-  <button data-section="home" class="active">HOME</button>
-  <button data-section="about">ABOUT</button>
-  <button data-section="news">NEWS</button>
-  <button data-section="music">MUSIC</button>
-  <button data-section="contact">CONTACT</button>
+
+  <div class="menu">
+    <button data-section="home" class="active">HOME</button>
+    <button data-section="about">ABOUT</button>
+    <button data-section="news">NEWS</button>
+    <button data-section="music">MUSIC</button>
+    <button data-section="contact">CONTACT</button>
+  </div>
 </nav>
 
-<style>
-  /* 모바일 네비게이션 대응 */
-@media (max-width: 480px) {
-  nav {
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0.6em 0.8em;
-  }
-  /* 모바일: 로고 숨김 */
-  nav .logo-link { display:none !important; }
-  nav button {
-    flex:0 0 auto;
-    font-size:0.9rem;
-    padding:0.45em 0.8em;
-    margin-left:0.3em;
-  }
-}
+<!-- ==========================
+     INTRO SPLASH
+=========================== -->
+<div id="intro-splash">
+  <h2>We're always there</h2>
+  <p>우린 언제나 여기에 있어</p>
+</div>
 
-/* 데스크탑 로고 */
-nav img.logo {
-  height:34px;
-  width:auto;
-  object-fit:contain;
-}
-  /* 모바일에서 로고 숨김 */
-  nav .logo-link {
-    display:none !important;
-  }
-  nav button {
-    flex:0 0 auto;
-    font-size:0.9rem;
-    padding:0.45em 0.8em;
-    margin-left:0.3em;
-  }
-} {
-  flex:0 0 auto;
-  font-size:0.95rem;
-  padding:0.45em 0.8em;
-  margin-left:0.3em;
-}
-}
-  .nav-menu-row {
-    width:100%;
-    display:flex;
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    gap:0.5em;
-    padding:0.4em 0.5em;
-    white-space:nowrap;
-    scrollbar-width:none;
-    background:#fff;
-  }
-  .nav-menu-row::-webkit-scrollbar { display:none; }
-  .nav-menu-row button {
-    flex:0 0 auto;
-    font-size:0.85rem;
-    padding:0.35em 0.7em;
-  }
-  /* 모바일에서 로고 완전 숨김 */
-  .nav-menu-row .logo-link {
-    display:none;
-  }
-}
-}
-    
+<!-- ==========================
+     CONTENT
+=========================== -->
+<main id="content" aria-live="polite"></main>
 
-    nav button {
-      flex:0 0 auto;
-      font-size:0.8rem;
-      padding:0.35em 0.6em;
-      flex-shrink:0;
-    }
-  }
-    nav::-webkit-scrollbar { display:none; }
-
-    nav .logo-link {
-      flex:0 0 auto;
-      margin-right:0.4em;
-      display:flex;
-      align-items:center;
-    }
-
-    nav img.logo {
-  height:34px;
-  width:auto;
-  object-fit:contain;
-}
-    }
-
-    nav button {
-      flex:0 0 auto;
-      font-size:0.85rem;
-      padding:0.35em 0.6em;
-    }
-  }
-    nav::-webkit-scrollbar { display:none; }
-
-    nav .logo-link {
-      flex:0 0 auto;
-      margin-right:0.8em;
-      display:flex;
-      align-items:center;
-    }
-
-    nav button {
-      flex:0 0 auto;
-      font-size:0.95rem;
-      padding:0.45em 0.8em;
-    }
-
-    nav img.logo {
-      height:26px !important;
-      object-fit:contain;
-    }
-  }
-</style>
-
-  <!-- Intro Splash (full-screen) -->
-  <div id="intro-splash" style="position:fixed; top:0; left:0; width:100%; height:100vh; background:linear-gradient(180deg,#ffffff 0%,#f3f6ff 100%); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:9999; opacity:1; transition:opacity 1.2s ease;">
-    <h2 style="font-family:'OtherHand'; font-size:3.4em; color:#222; opacity:0; animation:introFadeUp 1.8s ease forwards; text-shadow:0 6px 14px rgba(0,0,0,0.15);">We're always there</h2>
-    <p style="margin-top:1em; font-size:1.25em; color:#666; opacity:0; animation:introFadeUp 2.2s ease forwards 0.3s;">우린 언제나 여기에 있어</p>
-  </div>
-
-  <main id="content" aria-live="polite"></main>
-
-  <script src="/inaekkum_official/js/main.js"></script>
+<script src="/inaekkum_official/js/main.js"></script>
 
 <script>
-// Intro fade → load HOME
 window.addEventListener("DOMContentLoaded", () => {
   if (typeof loadSection === 'function') loadSection('home');
+
   const splash = document.getElementById("intro-splash");
   const nav = document.querySelector('nav');
-  if(nav) nav.style.opacity = 0;
 
-  // 2초 후 페이드아웃
-  // splash → home 전환
-  splash.addEventListener('animationend', () => {
-    splash.style.opacity = 0;
-    if (nav) nav.style.opacity = 1;
-    setTimeout(() => splash.style.display = 'none', 800);
-  });
+  nav.style.opacity = 0;
 
   setTimeout(() => {
     splash.style.opacity = 0;
-    if(nav) nav.style.opacity = 1;
-    setTimeout(() => splash.style.display = "none", 1200);
+    nav.style.opacity = 1;
+    setTimeout(() => splash.style.display = "none", 800);
   }, 2000);
 });
 </script>
-
-<style>
-@keyframes introFadeUp {
-  from { opacity:0; transform:translateY(20px);} 
-  to { opacity:1; transform:translateY(0);} 
-}
-</style>
 
 </body>
 </html>
