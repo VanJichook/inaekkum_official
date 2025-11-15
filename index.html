@@ -17,10 +17,13 @@
 </head>
 
 <body>
-  <nav>
-    <a href="/inaekkum_official/index.html" class="logo-link">
-      <img src="/inaekkum_official/assets/images/inaekkum_logo.png" class="logo" width="120" height="40" loading="lazy" style="height:32px; margin-right:1.2em;">
-    </a>
+<nav>
+<a href="/inaekkum_official/index.html" class="logo-link">
+<!-- 로고 복원본: 원래 비율 유지, height 강제 제거 -->
+<img src="/inaekkum_official/assets/images/inaekkum_logo.png" class="logo"
+width="160" height="40" loading="lazy"
+style="margin-right:1.2em; object-fit:contain;">
+</a>
     
     <button data-section="home" class="active">HOME</button>
     <button data-section="about">ABOUT</button>
@@ -30,13 +33,12 @@
   </nav>
 
 <style>
-  /* 모바일 네비게이션 대응 */
+  /* 모바일 네비게이션 대응 (정리 버전) */
   @media (max-width: 480px) {
     nav {
       display:flex;
       align-items:center;
-      justify-content:center;
-      display:flex;
+      justify-content:flex-start;
       flex-wrap:nowrap;
       overflow-x:auto;
       -webkit-overflow-scrolling:touch;
@@ -50,6 +52,8 @@
     nav .logo-link {
       flex:0 0 auto;
       margin-right:0.8em;
+      display:flex;
+      align-items:center;
     }
 
     nav button {
@@ -60,20 +64,7 @@
 
     nav img.logo {
       height:26px !important;
-    }
-  }
-    nav .logo-link {
-      flex-basis:100%;
-      display:flex;
-      justify-content:center;
-      margin-bottom:0.3em;
-    }
-    nav button {
-      font-size:0.9rem;
-      padding:0.4em 0.6em;
-    }
-    nav img.logo {
-      height:28px !important;
+      object-fit:contain;
     }
   }
 </style>
