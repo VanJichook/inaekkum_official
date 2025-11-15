@@ -14,7 +14,7 @@
 body {
   margin: 0;
   font-family: 'Noto Sans KR', sans-serif;
-  color: #333;
+  color: #2a2a2a; /* ← 기존 #333 → 더 진한 회색 */
   background: #fff;
   line-height: 1.6;
   overflow-x: hidden;
@@ -26,7 +26,7 @@ h1, h2, h3, h4, nav button {
   border: none;
   font-size: 1em;
   cursor: pointer;
-  color: #666;
+  color: #73cfd9 !important;
   transition: 0.25s;
   font-family: 'OtherHand', sans-serif;
 }
@@ -63,14 +63,12 @@ nav button {
   border: none;
   font-size: 1em;
   cursor: pointer;
-  color: #666;
   transition: 0.25s;
 }
 
 nav button:hover,
 nav button.active {
-  color: #000;
-  font-weight: 600;
+  color: #4ab1bd !important;
 }
 
 @media(max-width:600px) {
@@ -134,6 +132,7 @@ nav button.active {
   text-align: center;
   font-weight: 600;
   margin-top: 0.5em;
+  color: #2a2a2a; /* 본문과 일관되게 */
 }
 
 /* ================================
@@ -142,12 +141,13 @@ nav button.active {
 .news-card h4 {
   margin-bottom: 0.4em;
   font-family: 'OtherHand';
+  color: #73cfd9 !important;
 }
 
 .news-card a {
   display: block;
   padding: 0.3em 0;
-  color: #333;
+  color: #2a2a2a; /* 기존 #333 → 통합 */
   text-decoration: none;
 }
 
@@ -157,29 +157,14 @@ nav button.active {
 .contact-block h3 {
   margin-bottom: 0.4em;
   font-family: 'OtherHand';
+  color: #73cfd9 !important;
 }
 
 .contact-block p a {
-  color: #333;
+  color: #2a2a2a;
   text-decoration: none;
 }
 
 .contact-block p a:hover {
   text-decoration: underline;
-}
-
-/* ==========================================
-   ★ 카테고리 전용 오버라이드 (업데이트 v1.1)
-     - 폰트 크기 업
-     - 컬러 #73cfd9 적용
-========================================== */
-nav button,
-h1, h2, h3, h4 {
-  font-size: 1.25em !important;
-  color: #73cfd9 !important;
-}
-
-nav button:hover,
-nav button.active {
-  color: #4ab1bd !important;
 }
