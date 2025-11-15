@@ -103,8 +103,8 @@
   <!-- NEWS SECTION -->
 <section id="news">
   
-  <img src="/inaekkum_official/assets/images/singlecup_wide.png" 
-       style="width:100%;  border-radius:8px; margin:1.5em 0;">
+  <img src="/inaekkum_official/assets/images/singlecup_wide.png"
+       style="width:100vw; max-width:none; height:55vh; object-fit:cover; margin-left:50%; transform:translateX(-50%); padding:0; border-radius:0; display:block;">
 
   <h3 style="font-family:'OtherHand', cursive; font-size:2.2em; margin-bottom:1em; letter-spacing:-0.5px;">Single Cup — releasing December 15</h3>
 
@@ -119,7 +119,7 @@
     const box = document.getElementById("rss-feed");
     if (!box) return;
 
-    fetch('https://vanjichook.github.io/inaekkum_official/data/naver_rss.json')
+    fetch('https://vanjichook.github.io/inaekkum_official/data/naver_rss.json?ts=' + Date.now())
       .then(r => r.json())
       .then(data => {
         if (!data.items) {
