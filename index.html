@@ -40,21 +40,9 @@ style="margin-right:1.2em; object-fit:contain;">
 <style>
   /* 모바일 네비게이션 대응 (로고/메뉴 분리) */
 @media (max-width: 480px) {
-  .nav-wrap {
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    border-bottom:1px solid #eee;
-  }
-
   .nav-logo-row {
-    width:100%;
-    display:flex;
-    justify-content:center;
-    padding:0.5em 0;
-    background:#fff;
+    display:none;
   }
-
   .nav-menu-row {
     width:100%;
     display:flex;
@@ -67,19 +55,17 @@ style="margin-right:1.2em; object-fit:contain;">
     scrollbar-width:none;
     background:#fff;
   }
-
   .nav-menu-row::-webkit-scrollbar { display:none; }
-
   .nav-menu-row button {
     flex:0 0 auto;
     font-size:0.85rem;
     padding:0.35em 0.7em;
   }
-
-  .nav-logo-row img.logo {
-    width:140px !important;
-    height:auto !important;
+  /* 모바일에서 로고 완전 숨김 */
+  .nav-menu-row .logo-link {
+    display:none;
   }
+}
 }
     
 
@@ -100,9 +86,10 @@ style="margin-right:1.2em; object-fit:contain;">
     }
 
     nav img.logo {
-      width:120px !important;
-      height:auto !important;
+      width:180px;
+      height:auto;
       object-fit:contain;
+    }
     }
 
     nav button {
