@@ -9,11 +9,57 @@
   <link rel="stylesheet" href="/inaekkum_official/css/style.css">
 
   <style>
-    @font-face {
-      font-family: "OtherHand";
-      src: url("/inaekkum_official/fonts/OtherHand-Medium.woff2") format("woff2");
-    }
-  </style>
+/* ---- NAVIGATION CLEAN RESET ---- */
+nav {
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  padding:1em 1.4em;
+  background:#fff;
+  position:relative;
+  z-index:10;
+}
+
+nav .logo-link {
+  margin-right:2em;
+  display:flex;
+  align-items:center;
+}
+
+nav img.logo {
+  height:40px;   /* 데스크탑에서 크게 복구 */
+  width:auto;
+  object-fit:contain;
+}
+
+nav button {
+  background:none;
+  border:none;
+  margin-right:1.2em;
+  font-size:1rem;
+  cursor:pointer;
+  padding:0.3em 0.4em;
+}
+
+nav button.active {
+  font-weight:700;
+}
+
+/* ---- MOBILE ---- */
+@media (max-width: 480px) {
+  nav {
+    padding:0.8em 1em;
+    justify-content:flex-start;
+  }
+  nav .logo-link {
+    display:none; /* 모바일에서는 로고 숨김 */
+  }
+  nav button {
+    font-size:0.9rem;
+    margin-right:0.8em;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -29,15 +75,30 @@
 </nav>
 
 <style>
-  /* 모바일 네비게이션 대응 (로고/메뉴 분리) */
-/* 모바일에서도 로고와 메뉴를 한 줄로 유지 */
+  /* 모바일 네비게이션 대응 */
 @media (max-width: 480px) {
   nav {
     display:flex;
     align-items:center;
-    justify-content:flex-end;
+    justify-content:space-between;
     padding:0.6em 0.8em;
   }
+  /* 모바일: 로고 숨김 */
+  nav .logo-link { display:none !important; }
+  nav button {
+    flex:0 0 auto;
+    font-size:0.9rem;
+    padding:0.45em 0.8em;
+    margin-left:0.3em;
+  }
+}
+
+/* 데스크탑 로고 */
+nav img.logo {
+  height:34px;
+  width:auto;
+  object-fit:contain;
+}
   /* 모바일에서 로고 숨김 */
   nav .logo-link {
     display:none !important;
@@ -48,7 +109,26 @@
     padding:0.45em 0.8em;
     margin-left:0.3em;
   }
-}bar { display:none; }
+} {
+  flex:0 0 auto;
+  font-size:0.95rem;
+  padding:0.45em 0.8em;
+  margin-left:0.3em;
+}
+}
+  .nav-menu-row {
+    width:100%;
+    display:flex;
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    gap:0.5em;
+    padding:0.4em 0.5em;
+    white-space:nowrap;
+    scrollbar-width:none;
+    background:#fff;
+  }
+  .nav-menu-row::-webkit-scrollbar { display:none; }
   .nav-menu-row button {
     flex:0 0 auto;
     font-size:0.85rem;
@@ -79,8 +159,8 @@
     }
 
     nav img.logo {
-  width:140px;
-  height:auto;
+  height:34px;
+  width:auto;
   object-fit:contain;
 }
     }
@@ -101,11 +181,10 @@
     }
 
     nav button {
-      flnav img.logo {
-  height:34px;
-  width:auto;
-  object-fit:contain;
-}  }
+      flex:0 0 auto;
+      font-size:0.95rem;
+      padding:0.45em 0.8em;
+    }
 
     nav img.logo {
       height:26px !important;
