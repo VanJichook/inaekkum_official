@@ -30,23 +30,25 @@
 
 <style>
   /* 모바일 네비게이션 대응 (로고/메뉴 분리) */
+/* 모바일에서도 로고와 메뉴를 한 줄로 유지 */
 @media (max-width: 480px) {
-  .nav-logo-row {
-    display:none;
-  }
-  .nav-menu-row {
-    width:100%;
+  nav {
     display:flex;
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    gap:0.5em;
-    padding:0.4em 0.5em;
-    white-space:nowrap;
-    scrollbar-width:none;
-    background:#fff;
+    align-items:center;
+    justify-content:flex-end;
+    padding:0.6em 0.8em;
   }
-  .nav-menu-row::-webkit-scrollbar { display:none; }
+  /* 모바일에서 로고 숨김 */
+  nav .logo-link {
+    display:none !important;
+  }
+  nav button {
+    flex:0 0 auto;
+    font-size:0.9rem;
+    padding:0.45em 0.8em;
+    margin-left:0.3em;
+  }
+}bar { display:none; }
   .nav-menu-row button {
     flex:0 0 auto;
     font-size:0.85rem;
@@ -77,10 +79,10 @@
     }
 
     nav img.logo {
-      width:140px;
-      height:auto;
-      object-fit:contain;
-    }
+  width:140px;
+  height:auto;
+  object-fit:contain;
+}
     }
 
     nav button {
@@ -99,10 +101,11 @@
     }
 
     nav button {
-      flex:0 0 auto;
-      font-size:0.95rem;
-      padding:0.45em 0.8em;
-    }
+      flnav img.logo {
+  height:34px;
+  width:auto;
+  object-fit:contain;
+}  }
 
     nav img.logo {
       height:26px !important;
