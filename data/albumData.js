@@ -87,10 +87,10 @@ Published: MIRRORBALLMUSIC
     tracks: [
       { en: "TSR", kr: "TSR", vid: null },
       { en: "Time Train", kr: "Time Train", vid: null },
-      { en: "Will", kr: "Will", vid: "-5HnjaBuYTs" },
-      { en: "Moonlight", kr: "너는 내게 달빛", vid: "MF_ZwjUA19Q" },
+      { en: "will", kr: "will", vid: "-5HnjaBuYTs" },
+      { en: "You're The One", kr: "너는 내게 달빛", vid: "MF_ZwjUA19Q" },
       { en: "Snowflake", kr: "눈송이", vid: null },
-      { en: "Corona Blue", kr: "코로나 블루", vid: "uOD-RKLRkX8" }
+      { en: "Corona blue", kr: "코로나 블루", vid: "uOD-RKLRkX8" }
     ],
     kr: `
       <h3>크레딧 (KR)</h3>
@@ -130,15 +130,16 @@ Artwork: rong.ryn
 
   coronablue: {
     cover: "/inaekkum_official/assets/albums/corona_blue.jpg",
-    title: "Corona Blue",
+    title: "Corona blue",
     date: "2022 · Single",
     tracks: [
-      { en: "Corona Blue", kr: "코로나 블루", vid: "uOD-RKLRkX8" }
+      { en: "Corona blue", kr: "코로나 블루", vid: "uOD-RKLRkX8" }
     ],
     kr: `
       <h3>크레딧 (KR)</h3>
       <pre>
-작사/작곡/편곡: 민우석
+작사/작곡: 민우석
+편곡: 이리와 내 꿈에 태워줄게
 Vocal: 민우석
 Guitar: 김태양
 Keys: 최원민
@@ -152,13 +153,14 @@ Mastering: 권남우@821Sound
     en: `
       <h3>Credits (EN)</h3>
       <pre>
-Lyrics/Composition/Arrangement: Min Wooseok
-Guitar: Kim Taeyang
-Keys: Choi Wonmin
-Bass: Choi Sungwook
-Drums: Choi Joochan
-Mixing: Kim Taeyang
-Mastering: Kwon Namwoo@821Sound
+Lyrics/Composition: MIN WOOSEOK
+Arrangement: inaekkum
+Guitar: KIM TAEYANG
+Keys: CHOI WONMIN
+Bass: CHOI SUNGWOOK
+Drums: CHOI JOOCHAN
+Mixing: KIM TAEYANG
+Mastering: KWON NAMWOO@821Sound
       </pre>
     `,
   },
@@ -168,12 +170,13 @@ Mastering: Kwon Namwoo@821Sound
     title: "Like A Movie",
     date: "2023 · Single",
     tracks: [
-      { en: "Like A Movie", kr: "Like A Movie", vid: "a9gRQBwnhHE" }
+      { en: "Like A Movie", kr: "영화처럼", vid: "a9gRQBwnhHE" }
     ],
     kr: `
       <h3>크레딧 (KR)</h3>
       <pre>
-작곡/작사/편곡: 민우석
+작사/작곡: 민우석
+편곡: 이리와 내 꿈에 태워줄게
 Vocal: 민우석
 Guitar: 김태양
 Keys: 최원민
@@ -187,14 +190,15 @@ Mastering: 권남우@821Sound
     en: `
       <h3>Credits (EN)</h3>
       <pre>
-Lyrics/Composition/Arrangement: Min Wooseok
-Guitar: Kim Taeyang
-Keys: Choi Wonmin
-Bass: Choi Sungwook
-Drums: Park Jin
-Recording: Kim Taeyang, Min Wooseok, Hwang Gyungsoo
-Mixing: Kim Taeyang
-Mastering: Kwon Namwoo@821Sound
+Lyrics/Composition: MIN WOOSEOK
+Arrangement: inaekkum
+Guitar: KIM TAEYANG
+Keys: CHOI WONMIN
+Bass: CHOI SUNGWOOK
+Drums: PARK JIN
+Recording: KIM TAEYANG, MIN WOOSEOK, HWANG GYOUNGSOO
+Mixing: KIM TAEYANG
+Mastering: KWON NAMWOO@821Sound
       </pre>
     `,
   },
@@ -204,24 +208,34 @@ Mastering: Kwon Namwoo@821Sound
     title: "용가리도 하늘을 날고 싶어",
     date: "2021 · Single",
     tracks: [ 
-      { en: "Even penguins want to fly in the sky", kr: "용가리도 하늘을 날고 싶어", vid: "2KxNc9VBBjA" },
+      { en: "Dragon Wants To Fly In The Sky Too", kr: "용가리도 하늘을 날고 싶어", vid: "2KxNc9VBBjA" },
       { en: "I'm In To You", kr: "빠졌네", vid: null },
-      { en: "Dragon Wants To Fly_inst.", kr: "용가리도 하늘을 날고 싶어_inst.", vid: null },
+      { en: "Dragon Wants To Fly In The Sky Too_inst.", kr: "용가리도 하늘을 날고 싶어_inst.", vid: null },
       { en: "I'm In To You_inst.", kr: "빠졌네_inst.", vid: null }
     ],
-    kr: `
-      <h3>크레딧 (KR)</h3>
-      <pre>
+kr: `
+  <h3>크레딧 (KR)</h3>
+  <pre>
 작사/작곡: 민우석
 편곡: 민우석, 박진, 최성욱, 최원민
 Recording: MGMC H STUDIO, 한혜미
 Mixing: 김태양
 Mastering: 도정회@Soundmax
 Artwork: 이현우
-</pre>
-    `,
-  },
+  </pre>
+`,
 
+en: `
+  <h3>Credits (EN)</h3>
+  <pre>
+Lyrics/Composition: MIN WOOSEOK
+Arrangement: MIN WOOSEOK, PARK JIN, CHOI SUNGWOOk, CHOI WONMIN
+Recording: MGMC H STUDIO, HAN HYEMI
+Mixing: KIM TAEYANG
+Mastering: DO JOUNGHOE@Soundmax
+Artwork: LEE HYUNWOO
+  </pre>
+`,
 
 seed: {
 cover: "/inaekkum_official/assets/albums/seed.jpg",
@@ -231,19 +245,19 @@ tracks: [
 { en: "Seed (OST)", kr: "Seed (OST)", vid: "90rUO7xc1KA" }
 ],
 kr: `
-<h3>크레딧 (KR)</h3>
-<pre>
+  <h3>크레딧 (KR)</h3>
+  <pre>
 작곡: 민우석
 편곡: 민우석, 백지현
-</pre>
+  </pre>
 `,
 en: `
-<h3>Credits (EN)</h3>
-<pre>
-Composition/Arrangement: Min Wooseok (More details pending)
-</pre>
+  <h3>Credits (EN)</h3>
+  <pre>
+Composition: MIN WOOSEOK
+Arrangement: MIN WOOSEOK, BAEK JIHYUN
+  </pre>
 `,
-},
 
 
 compilation_dg: {
@@ -252,26 +266,25 @@ title: "대구인디음악연대기 2022",
 date: "2023 · Compilation",
 tracks: [ { en: "Flower Road", kr: "꽃길", vid: null } ],
 kr: `
-<h3>크레딧 (KR)</h3>
-<pre>
+  <h3>크레딧 (KR)</h3>
+  <pre>
 Vocal: 이내꿈
 작곡: 민우석
 작사: 민우석
 기획: 클럽헤비 × 인디053
 발매: Various
-</pre>
+  </pre>
 `,
 en: `
-<h3>Credits (EN)</h3>
-<pre>
-Vocal: inaekkum
-Composition: Min Wooseok
-Lyrics: Min Wooseok
-Produced by Club Heavy × Indie053
+  <h3>Credits (EN)</h3>
+  <pre>
+Vocal: INAEKKUM
+Composition: MIN WOOSEOK
+Lyrics: MIN WOOSEOK
+Produced by CLUB HEAVY × INDIE053
 Release: Various
-</pre>
+  </pre>
 `,
-},
 
 
 compilation_butterfly: {
@@ -287,16 +300,15 @@ Featuring: 빈달
 작곡: 민우석
 작사: 허유미
   </pre>
-  `,
-  en: `
+`,
+en: `
   <h3>Credits (EN)</h3>
   <pre>
-Music: inaekkum
-Featuring: Bindal
-Composed by Min Wooseok
-Lyrics: Heo Yumi
+Music: INAEKKUM
+Featuring: BINDAL
+Composition: MIN WOOSEOK
+Lyrics: HEO YUMI
   </pre>
-  `,
-},
+`,
 
 }; // ← window.albumData 객체 마지막 닫기
