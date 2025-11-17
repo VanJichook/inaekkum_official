@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>inaekkum — Official Website</title>
   <link rel="icon" href="/inaekkum_official/favicon.ico" />
+  <link rel="preload" as="image" href="/inaekkum_official/assets/images/home_01.jpeg" />
 
   <!-- ======================= FONT ======================= -->
   <style>
@@ -14,6 +15,7 @@
   }
   a { color:#333 !important; transition:0.2s ease; }
 a:hover { color:#000 !important; opacity:0.75; }
+@media (max-width:600px){ body{font-size:1.08em;} nav button{font-size:1.25em;} #content{padding:2.4em;} .logo{height:48px;} h1,h2,h3,h4{font-size:1.1em;} }
 </style>
 
   <!-- ======================= GLOBAL STYLE ======================= -->
@@ -54,15 +56,15 @@ a:hover { color:#000 !important; opacity:0.75; }
     font-size: 1.15em;
     background: none;
     border: none;
-    color: #333333;
+    color: #73cfd9;
     cursor: pointer;
     transition: 0.2s;
     padding: 0.4em 0.9em;
   }
   nav button:hover,
-  nav button.active { color: #73cfd9; }
+  nav button.active { color: #333; }
 
-  @media(max-width:600px){ .logo { display:none; } }
+   }
 
   /* ======================= CONTENT ======================= */
   #content {
