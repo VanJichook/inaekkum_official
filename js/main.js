@@ -243,14 +243,43 @@ async function openAlbumModal(key) {
 }
 
 function openTrackVideo(id) {
-  const modal = document.getElementById("album-modal");
-  const box = document.getElementById("albumModalInner");
+  // 기존 앨범 모달 숨김
+  const album = document.getElementById("album-modal");
+  album.style.display = "none";
 
-  box.innerHTML = `
-    <iframe width="100%" height="360" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>
+  // 이미 popup이 있으면 제거
+  const old = document.getElementById("video-popup");
+  if (old) old.remove();
+
+  // 팝업 생성
+  const popup = document.createElement("div");
+  popup.id = "video-popup";
+  popup.style = `
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
   `;
 
-  modal.style.display = "flex";
+  popup.innerHTML = `
+    <div style="background:#fff; padding:1em; border-radius:14px; max-width:900px; width:95%; position:relative;">
+      <button id="videoCloseBtn" style="position:absolute; top:10px; right:10px; font-size:1.6em; background:none; border:none; cursor:pointer;">×</button>
+      <iframe width="100%" height="520" src="https://www.youtube.com/embed/${id}" frameborder="0" allowfullscreen></iframe>
+    </div>
+  `;
+
+  document.body.appendChild(popup);
+
+  // 닫기 버튼 → 팝업 제거 + 앨범 모달 복귀
+  document.getElementById("videoCloseBtn").onclick = () => {
+    popup.remove();
+    album.style.display = "flex";
+  };
 }
 
 function closeAlbumModal() {
@@ -274,4 +303,3 @@ style.innerHTML = `
   @media(max-width:600px){ .album-header{flex-direction:column; align-items:center;} .album-cover{width:60%;} }
 `;
 document.head.appendChild(style);
-
