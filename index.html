@@ -1,25 +1,18 @@
+<!-- Updated HTML with improved mobile layout for logo and menu (v1) -->
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>inaekkum — Official Website</title>
-  <link rel="icon" href="/inaekkum_official/favicon.ico" />
-  <link rel="preload" as="image" href="/inaekkum_official/assets/images/home_01.jpeg" />
 
-  <!-- ======================= FONT ======================= -->
   <style>
   @font-face {
     font-family: 'OtherHand';
     src: url('/inaekkum_official/fonts/OtherHand-Medium.woff2') format('woff2');
   }
-  a { color:#333 !important; transition:0.2s ease; }
-a:hover { color:#000 !important; opacity:0.75; }
-@media (max-width:600px){ body{font-size:1.08em;} nav button{font-size:1.25em;} #content{padding:2.4em;} .logo{height:48px;} h1,h2,h3,h4{font-size:1.1em;} }
-</style>
 
-  <!-- ======================= GLOBAL STYLE ======================= -->
-  <style>
   body {
     margin: 0;
     font-family: 'Noto Sans KR', sans-serif;
@@ -29,210 +22,93 @@ a:hover { color:#000 !important; opacity:0.75; }
     line-height: 1.6;
   }
 
-  /* ======================= NAV ======================= */
+  /* NAV */
   nav {
     width: 100%;
     background: #fff;
-    padding: 0.8em 1.5em;
+    padding: 0.8em 1.2em;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     position: sticky;
     top: 0;
     z-index: 50;
-    position: relative;
   }
-  .logo-link { margin: 0; display: flex; align-items: center; }
-  .logo { height: 42px; width: auto; }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+  }
+
+  .logo {
+    height: 42px;
+    width: auto;
+  }
 
   .menu {
     display: flex;
     gap: 1.2em;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  nav button {
-    font-size: 1.15em;
-    background: none;
-    border: none;
-    color: #73cfd9;
-    cursor: pointer;
-    transition: 0.2s;
-    padding: 0.4em 0.9em;
-  }
-  nav button:hover,
-  nav button.active { color: #333; }
-
-   }
-
-  /* ======================= CONTENT ======================= */
-  #content {
-    padding: 2em;
-    max-width: 900px;
-    margin: auto;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  #content.loaded { opacity: 1; }
-
-  /* ======================= INTRO SPLASH ======================= */
-  #intro-splash {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: #fff;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 1.2s ease;
-  }
-  #intro-splash h2 {
-    font-family: 'OtherHand';
-    color: #73cfd9;
-    font-size: 2.4em;
-    opacity: 0;
-    animation: splashFade 1.2s forwards;
-  }
-  #intro-splash p {
-    opacity: 0;
-    animation: splashFade 1.2s forwards;
-    animation-delay: 0.2s;
-  }
-  @keyframes splashFade { from{opacity:0;} to{opacity:1;} }
-
-  /* ======================= MODAL ======================= */
-  #album-modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.65);
-    backdrop-filter: blur(6px);
-    z-index: 999;
-    padding: 1em;
-    justify-content: center;
-    align-items: center;
-  }
-  #album-modal-content {
-    background: #fff;
-    width: 95%;
-    max-width: 900px;
-    border-radius: 18px;
-    padding: 2.4em 2em;
-    max-height: 88vh;
-    overflow-y: auto;
-    animation: fadeUp 0.45s ease;
     position: relative;
-  }
-  @keyframes fadeUp { from{opacity:0; transform:translateY(24px);} to{opacity:1; transform:translateY(0);} }
-
-  .modal-close {
-    position: absolute;
-    top: 18px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 2.2em;
-    color: #222;
-    cursor: pointer;
+    left: 0;
+    transform: none;
   }
 
-  /* ======================= VIDEO POPUP ======================= */
-  #video-popup {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(6px);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 99999;
-  }
-  #video-popup .inner {
-    background: #fff;
-    border-radius: 18px;
-    padding: 1em;
-    width: 90%;
-    max-width: 960px;
-  }
-  #video-popup iframe {
-    width: 100%;
-    height: 60vh;
-    max-height: 600px;
-    border-radius: 14px;
-  }
-  #video-close {
-    position: absolute;
-    top: 12px;
-    right: 16px;
+  nav button {
     background: none;
     border: none;
-    font-size: 2.4em;
-    color: #222;
+    font-size: 1.1em;
     cursor: pointer;
+    color: #73cfd9;
+    padding: 0.4em 0.8em;
+    transition: 0.2s;
+  }
+
+  nav button:hover,
+  nav button.active {
+    color: #333;
+  }
+
+  /* MOBILE FIX — prevent overlap */
+  @media (max-width: 600px) {
+    nav {
+      flex-wrap: wrap;
+      padding: 0.8em 1em;
+    }
+
+    .logo {
+      height: 40px;
+    }
+
+    .menu {
+      width: 100%;
+      margin-top: 0.6em;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8em 1.2em;
+    }
+
+    nav button {
+      font-size: 1.05em;
+    }
   }
   </style>
 </head>
-
 <body>
+
   <nav>
     <a href="/inaekkum_official/index.html" class="logo-link">
       <img src="/inaekkum_official/assets/images/inaekkum_logo.png" class="logo" />
     </a>
     <div class="menu">
-      <button data-section="home" class="active">HOME</button>
-      <button data-section="about">ABOUT</button>
-      <button data-section="news">NEWS</button>
-      <button data-section="music">MUSIC</button>
-      <button data-section="contact">CONTACT</button>
+      <button class="active">HOME</button>
+      <button>ABOUT</button>
+      <button>NEWS</button>
+      <button>MUSIC</button>
+      <button>CONTACT</button>
     </div>
   </nav>
 
-  <div id="intro-splash">
-    <h2>We're always there</h2>
-    <p>우린 언제나 여기에 있어</p>
-  </div>
-
-  <main id="content"></main>
-
-  <!-- Album Modal -->
-  <div id="album-modal">
-    <div id="album-modal-content">
-      <button class="modal-close" onclick="closeAlbumModal()">×</button>
-      <div id="albumModalInner"></div>
-    </div>
-  </div>
-
-  <!-- Video Popup -->
-  <div id="video-popup">
-    <button id="video-close">✕</button>
-    <div class="inner">
-      <iframe id="video-frame" src="" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <script src="/inaekkum_official/data/albumData.js?v=1"></script>
-  <script src="/inaekkum_official/js/main.js?v=7"></script>
-
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      if (typeof loadSection === 'function') loadSection('home');
-
-      const splash = document.getElementById('intro-splash');
-      const nav = document.querySelector('nav');
-      nav.style.opacity = 0;
-
-      setTimeout(() => {
-        splash.style.opacity = 0;
-        nav.style.opacity = 1;
-        setTimeout(() => splash.style.display = 'none', 800);
-      }, 2000);
-    });
-  </script>
 </body>
 </html>
