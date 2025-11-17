@@ -119,7 +119,7 @@ function loadBandsintownWidget() {
       data-bit-logo-position="bottomRight"
       data-bit-logo-color="rgba(34,36,38,1)"
     ></a>
-
+`;
   const oldScript = document.getElementById("bit-script");
   if (oldScript) oldScript.remove();
 
