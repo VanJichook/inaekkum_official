@@ -5,8 +5,8 @@ window.albumData = {
     date: "2025 · LP",
     tracks: [
       { en: "Before Sunrise", kr: "비포 선라이즈", vid: "O4636rdhkM8" },
-      { en: "Noise", kr: "노이즈", vid: "VIDEO_ID_NOISE" },
-      { en: "Karman Line", kr: "카르만 라인", vid: "VIDEO_ID_KARMAN" },
+      { en: "Noise", kr: "노이즈", vid: "KehRxSCxo0U" },
+      { en: "Karman Line", kr: "카르만 라인", vid: "W1C-y5kvbkU" },
       { en: "Light", kr: "라이트", vid: "nQlgQ2GB56A" },
       { en: "Breath", kr: "브레스", vid: "E7hXtkPuRK4" },
       { en: "Sophie", kr: "소피", vid: "6YLdHTjPhkI" },
