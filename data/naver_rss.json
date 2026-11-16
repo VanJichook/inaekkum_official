@@ -1,7 +1,13 @@
 {
-  "title": "일기장",
-  "lastBuildDate": "2026-11-16T01:45:44.031Z",
+  "title": "inaekkum",
+  "lastBuildDate": "2026-11-16T09:21:33.892Z",
   "items": [
+    {
+      "title": "Protocol 00:Depersonalization",
+      "link": "https://blog.naver.com/inaekkum/224479427941?fromRss=true&trackingCode=rss",
+      "pubDate": "Mon, 16 Nov 2026 18:14:35 +0900",
+      "contentSnippet": "/* SYS_KERNEL_DUMP // NODE_0x8F4A */ #include  #include  #define BUFFER_OVERFLOW_GUARD 0x00FF1A9C #define MAX_THREADS 64 typedef struct { uint64_t mem_addr; uint32_t checksum; volatile int lock_state; } __attribute__((packed)) SectorHeader; static inline uint32_t hash_sync(const void *ptr, size_t len) { const uint8_t *data = (const uint8_t *)ptr; uint32_t seed = 0x811C9DC5; while (len--) { seed ^= *data++; seed *= 0x01000193; } return seed; } int init_daemon_routine(SectorHeader *target, int flags) { if (!target || (flags & 0x04)) retu......."
+    },
     {
       "title": "이내꿈의~~~ 50문답 [원민편]",
       "link": "https://blog.naver.com/inaekkum/224472051996?fromRss=true&trackingCode=rss",
@@ -23,7 +29,7 @@
     {
       "title": "살아냈다 + 사미삼 [10.31] 늦은 생일 후기",
       "link": "https://blog.naver.com/inaekkum/224469772736?fromRss=true&trackingCode=rss",
-      "pubDate": "Mon, 09 Nov 2026 05:07:49 +0900",
+      "pubDate": "Mon, 09 Nov 2026 05:07:48 +0900",
       "contentSnippet": "생일 우선 좋은 이야기부터 해보자 생일 며칠 전부터 덕분에 즐거웠다~~ 서울은 여전히 멀다. 그렇지만 매번 새롭다. 코스프레로 가게 옷 코스프레를 했다 몇 안 남은 수제 데모 CD가 거의 다 팔렸다. 왜 서서 잠든 거지 생일을 축하해 주셔서 감사합니다 다 잘 될 거야! 좋은 일이 생길 거야~ 일사형과 제일 싼 숙소에 왔다. 선물 받은 스티커와 엽서를 보면서 멍 때렸다. 나도 이 말을 전하고 싶었어. 대구에 와서는 보물창고에 들어갔다. 차 안에서 열심히 먹방을... 감사합니다 생일을 축하해 주셔서 달력에 표시되어 있는 거 아주 감각적이다 서울은 가게 하나하나가 다 이쁘다 왜 사람들이 서울에 계속 머무르고 싶어 하는지 아주 조금 엿......."
     },
     {
@@ -35,7 +41,7 @@
     {
       "title": "기술 가정",
       "link": "https://blog.naver.com/inaekkum/224454497698?fromRss=true&trackingCode=rss",
-      "pubDate": "Mon, 26 Oct 2026 19:30:52 +0900",
+      "pubDate": "Mon, 26 Oct 2026 19:30:51 +0900",
       "contentSnippet": "중2 기가(기술 가정) 시간 때 바느질했던 추억이... 여러분 시절에는 있었나요 기술 가정? 시침질하다가 실수로 중지 찔러서 체할 때 손 따듯이 피가 나부렀군요 바느질은 영 소질이 없지만 여튼 열심히 만들었어욤 결과물은... 토리 필통~~ 진정한 날 것 브루탈리즘 그자체 에메랄드 눈동자는 따라할 수 없었네요 ㅠ.ㅠ 서투르지만 한땀한땀 손바느질과 재봉틀도 조큼 양념쳐서 만들었답니다. (재봉틀로 만든 것 같지 않은 퀄리티) 어제는 또 오방가르드가 다시 문을 열었다고 합니다.  「우리는 춤춘다」 티셔츠에도 참여했으니 모쪼록 많은 관심부탁드립니다."
     },
     {
@@ -295,12 +301,6 @@
       "link": "https://blog.naver.com/inaekkum/224361354439?fromRss=true&trackingCode=rss",
       "pubDate": "Wed, 29 Jul 2026 10:00:00 +0900",
       "contentSnippet": "[ MRN Groove LIVE ] 대한민국에서 가장 뜨거운 도시, 대구에서 찾아온 세 팀의 아티스트가 찾아오는 날. '가장 사적인 고백으로, 보편의 안부를 전하다.' 몽환적이고 감각적인 사운드 위. 섬세한 서사를 담아내는 밴드. 이내꿈. ⭐️새로운 싱글 Yips 발매 후 첫 서울 공연!⭐️ 신곡과 추가로 공개될 미발매곡까지 함께 소개드려요 '무색무취에 가까운 차분함 속, 담아낸 안온한 감정.' 음악 안에서 진심과 변화를 추구하는 싱어송라이터. 심상명. '조용한 사람의 시끄러운 음악' 자신을 찾는 청각적 실험으로, 여러 장르를 넘나드는 잡식 아티스트. 동영. 8월의 여름, 대구.. 그 뜨거움을 안은 채. 우리의 마음......."
-    },
-    {
-      "title": "이내꿈 홈페이지 빅 업데이트 [8.21 Yips 싱글 공개]",
-      "link": "https://blog.naver.com/inaekkum/224359760382?fromRss=true&trackingCode=rss",
-      "pubDate": "Tue, 28 Jul 2026 12:40:00 +0900",
-      "contentSnippet": "이내꿈의 홈페이지가 대형 업데이트를 했습니다. 간단히 목록만 말씀드리면요 하반기 일정 업데이트 홈페이지 커서 귀여워짐 이메일 소식지 구독란 생성 밴드 소개란 업데이트+싱할라어+중국어 업데이트 멤버들 프로필을 클릭하면 특징이 짜잔 NEWS란 업데이트 가독성 개선 및 해외 팬을 위한 블로그 링크 및 네이버 계정 생성방법 안내 MUSIC란 업데이트 Contact 란 업데이트 게스트북 업데이트+소소한 개선 LYRICS Yips 가사 추가 및 개선 진짜 고생했다 나(라고 말해보고 싶었어요) 팬분들 피드백을 적극적으로 반영하니 많이 의견 주세요! 7월의 목......."
     }
   ]
 }
